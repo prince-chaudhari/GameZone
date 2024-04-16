@@ -1,0 +1,25 @@
+/* .mainContainer{
+    overflow: hidden;
+} */
+
+ .backContainer1{
+    max-width: 90rem;
+    position: absolute;
+    top: 45px;
+    left: 50px;
+}
+
+.backLink{
+    color: #ec6090;
+    line-height: 1.5rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.backLink:hover{
+    color: #f1a4bf;
+}

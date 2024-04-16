@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+        <link rel="icon" type="image/x-icon" href="../../../static/images/gamezone-01.png" />
+
+</head>
+
+<body class="bg-dark ">
+
+    {% include "GameWebsite\\html_files\\global.html" %}
+
+
+    <div class="container w-50 mt-5">
+
+        {% if messages %}
+        {{ messages.tags }} 
+        <div id="" class="alert alert-danger alert-dismissible">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            {% for message in messages %}
+            {{ message }}
+            {% endfor %}
+        </div>
+        {% endif %}
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <h2>Update Profile</h2>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label text-light ">Username:</label>
+                <!-- <input type="text" class="form-control" id="exampleInputEmail1"  name="username"
+                    value="{{ request.user.username }}"> -->
+                    {{ user_form.username }}
+            </div>  
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label text-light ">Email address</label>
+                <!-- <input type="email" class="form-control" id="exampleInputEmail1" name="email"
+                    value="{{ request.user.email }}"> -->
+                    {{ user_form.email }}    
+            </div>
+            <div class="mb-3">
+                <label  class="form-label text-light " >Update profile picture</label>
+                <!-- <input type="file" class="form-control" name="picture"> -->
+                {{ profile_form.pic }}
+            </div>
+            
+            <button type="submit" class="btn btn-outline-success w-100">Submit</button>
+            <button type="reset" class="btn btn-outline-light w-100 mt-3">Reset</button>
+        </form>
+        <a href="../" class="btn btn-outline-secondary mt-3 w-100">Back</a>
+    </div>
+    
+    <!-- <div class="form-content">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label class="small mb-1">Username:</label>
+                            {{ user_form.username }}
+                        <label class="small mb-1">Email:</label>
+                            {{ user_form.email }}
+                    </div>
+                    <div class="form-group">
+                        <a href="#">Change Password</a>
+                        <hr>
+                        <label class="small mb-1">Change Avatar:</label>
+                        {{ profile_form.profile_image }}
+                    </div>
+                </div>
+            </div>
+            <br><br>
+            <button type="submit" class="btn btn-outline-success btn-lg">Save Changes</button>
+            <button type="reset" class="btn btn-outline-light  btn-lg">Reset</button>
+        </form>
+        <a href="../" class="btn btn-outline-secondary mt-3 w-100">Back</a>
+    </div> -->
+</body>
+
+</html>

@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <title>Game Zone-Browse</title>
+</head>
+
+<body>
+  
+  {% include "GameWebsite\\html_files\\header.html" %}
+
+  <header class="header-area header-sticky">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="main-nav">
+            <!-- ***** Logo Start ***** -->
+            <a href="../home" class="logo">
+              <img src="../../../static/images/gamezone-02.png" alt="" />
+            </a>
+            <!-- ***** Logo End ***** -->
+            <!-- ***** Search End ***** -->
+            <div class="search-input">
+              <form id="search" action="#">
+                <input type="text" placeholder="Type Something" id="searchText" name="searchKeyword" />
+                <i class="fa fa-search"></i>
+              </form>
+              <div class="result-box"></div>
+            </div>
+            <!-- ***** Search End ***** -->
+            <!-- ***** Menu Start ***** -->
+            <ul class="nav">
+              <li><a href="../home/" >Home</a></li>
+              <li><a href="../browse/" class="active">Browse</a></li>
+              <li><a href="../contact/">Contact Us</a></li>
+              <li><a href="../rewards/">Rewards</a></li>  
+              {% if request.user.is_authenticated %}
+                  {% if user.profile_image.url %}
+                    <li class="profile">
+                      <a href="../profile/">Profile
+                        <img src="{{ user.profile_image.url }}" alt="" /></a>
+                    </li>
+                  {% else %}
+                    <li class="profile">  
+                      <a href="../profile/">Profile
+                        <img src="../../../static/images/profile-header.jpg" alt="" /></a>
+                    </li>
+                  {% endif %}
+              {% else %}
+              <li>  
+                <div class="form-box">
+                  <div class="button-box">                
+                    <a href="../login/" class="toggle-btn" id="t1"><p style="color: white;">Log in</p></a>
+                    <a href="../signup/" class="toggle-btn" id="t2"><p style="color: black;">Sign Up</p></a>
+                  </div>
+                </div>
+              </li>
+              {% endif %}
+            </ul>
+            <a class="menu-trigger">
+              <span>Menu</span>
+            </a>
+            <!-- ***** Menu End ***** -->
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="page-content">
+          <!-- ***** Most Playing Games Start ***** -->
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="featured-games header-text">
+                <div class="heading-section">
+                  <h4><em>Top 3 Playing</em> Games</h4>
+                </div>
+                <div class="owl-features owl-carousel">
+                  <div class="item">
+                    <div class="thumb">
+                      <img src="../../../static/images/featured-01.jpg" alt="" />
+                      <div class="hover-effect">
+                        <h6>2.4K playing</h6>
+                      </div>
+                    </div>
+                    <h4>snake game<br /><span>249K Interested</span></h4>
+                    <ul>
+                      <li><i class="fa fa-star"></i> 4.8</li>
+                      
+                    </ul>
+                  </div>
+                  <div class="item">
+                    <div class="thumb">
+                      <img src="../../../static/images/featured-02.jpg" alt="" />
+                      <div class="hover-effect">
+                        <h6>2.4K playing</h6>
+                      </div>
+                    </div>
+                    <h4>Puzzle<br /><span>249K Interested</span></h4>
+                    <ul>
+                      <li><i class="fa fa-star"></i> 4.8</li>
+                      
+                    </ul>
+                  </div>
+                  <div class="item">
+                    <div class="thumb">
+                      <img src="../../../static/images/featured-03.jpg" alt="" />
+                      <div class="hover-effect">
+                        <h6>2.4K playing</h6>
+                      </div>
+                    </div>
+                    <h4>Hangman<br /><span>249K Interested</span></h4>
+                    <ul>
+                      <li><i class="fa fa-star"></i> 4.8</li>
+                      <!--  -->
+                    </ul>
+                  </div>
+                  <div class="item">
+                    <div class="thumb">
+                      <img src="../../../static/images/featured-01.jpg" alt="" />
+                      <div class="hover-effect">
+                        <h6>2.4K Playing</h6>
+                      </div>
+                    </div>
+                    <h4>snake game<br /><span>249K Interested</span></h4>
+                    <ul>
+                      <li><i class="fa fa-star"></i> 4.8</li>
+                      
+                    </ul>
+                  </div>
+                  <div class="item">
+                    <div class="thumb">
+                      <img src="../../../static/images/featured-02.jpg" alt="" />
+                      <div class="hover-effect">
+                        <h6>2.4K Playing</h6>
+                      </div>
+                    </div>
+                    <h4>Puzzle<br /><span>249K Interested</span></h4>
+                    <ul>
+                      <li><i class="fa fa-star"></i> 4.8</li>
+                      
+                    </ul>
+                  </div>
+                  <div class="item">
+                    <div class="thumb">
+                      <img src="../../../static/images/featured-03.jpg" alt="" />
+                      <div class="hover-effect">
+                        <h6>2.4K Playing</h6>
+                      </div>
+                    </div>
+                    <h4>Hangman<br /><span>249K Interested</span></h4>
+                    <ul>
+                      <li><i class="fa fa-star"></i> 4.8</li>
+                      
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ***** Most Playing Games End ***** -->
+          
+
+          <!-- **Flipping cards starts** -->
+          <div class="cards">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="heading-section">
+                  <h4><em>Featured</em> Games</h4>
+                </div>
+                <div class="row">
+                  <div class="col-lg-4 col-sm-12 col-md-6">
+                    <div class="item" style="height: 70%;">
+                      <img
+                        src="../../../static/images/Snake_Game_Screen.jpg"
+                          alt=""
+                      />
+                        <span class="info-icon"
+                              style="position: absolute;top: 10px;right: 2px;  width: fit-content;font-size:12px; background-color: #27292a; color: #fff;padding: 10px;border-radius: 10px;"
+                              >Snake Game<i
+                                class="fa fa-info-circle fa-md"
+                                aria-hidden="true"
+                                style="color: #fff;padding-left: 5px;"
+                              ></i
+                            ></span>  
+                      <div class="back-content">
+                        <p class="content">
+                          Snake is a timeless arcade game where players control a growing snake that moves around the screen. The objective is simple: guide the snake to eat food pellets scattered throughout the playing field. As the snake consumes food, it grows longer, making it increasingly challenging to navigate without colliding into itself or the walls. Players must skillfully maneuver the snake using arrow keys or swipe gestures to avoid obstacles and aim for high scores. With each bite, the snake's length increases, testing the player's reflexes and strategy.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="button-container">
+                      {% if request.user.is_authenticated %}
+                      {% if request.user.profile.purchase_1 %}
+                      <a
+                        href="snake_game/"
+                        style="
+                          position: relative;
+                          left: 30px;
+                          top: -12px;
+                          padding: 10px;
+                          display: inline-block;
+                          width: 90%;
+                          margin-bottom: 20px;
+                          border-radius: 10px;
+                          font-size: 14px;
+                          color: #ec6090;
+                          border: 1px solid #ec6090;
+                          font-weight: 400;
+                          text-transform: capitalize;
+                          letter-spacing: 0.5px;
+                          transition: all 0.3s;
+                          text-align: center;
+                        "
+                        onmouseover="this.style.backgroundColor='#fff'"
+                        onmouseout="this.style.backgroundColor='transparent'"
+                        >Play now</a
+                      >
+                      {% else %}
+                      <a
+                        href="#paidModal1" data-bs-toggle="modal"
+                        style="
+                          position: relative;
+                          left: 30px;
+                          top: -12px;
+                          padding: 10px;
+                          display: inline-block;
+                          width: 90%;
+                          margin-bottom: 20px;
+                          border-radius: 10px;
+                          font-size: 14px;
+                          color: #ec6090;
+                          border: 1px solid #ec6090;
+                          font-weight: 400;
+                          text-transform: capitalize;
+                          letter-spacing: 0.5px;
+                          transition: all 0.3s;
+                          text-align: center;
+                        "
+                        onmouseover="this.style.backgroundColor='#fff'"
+                        onmouseout="this.style.backgroundColor='transparent'"
+                        >Play now</a
+                      >
+                      {% endif %}
+                      {% else %}
+                      <a
+                        href="#loginModal" data-bs-toggle="modal"
+                        style="
+                          position: relative;
+                          left: 30px;
+                          top: -12px;
+                          padding: 10px;
+                          display: inline-block;
+                          width: 90%;
+                          margin-bottom: 20px;
+                          border-radius: 10px;
+                          font-size: 14px;
+                          color: #ec6090;
+                          border: 1px solid #ec6090;
+                          font-weight: 400;
+                          text-transform: capitalize;
+                          letter-spacing: 0.5px;
+                          transition: all 0.3s;
+                          text-align: center;
+                        "
+                        onmouseover="this.style.backgroundColor='#fff'"
+                        onmouseout="this.style.backgroundColor='transparent'"
+                        >Play now</a
+                      >
+                      {% endif %}
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-sm-12 col-md-6">
+                    <div class="item" style="height: 70%;">
+                      <img
+                        src="../../../static/images/Tic_Tac_Toe_Screen.jpg"
+                        alt=""
+                      /><span class="info-icon"
+                        style="position: absolute;top: 10px;right: 2px;  width: fit-content;font-size:12px; background-color: #27292a; color: #fff;padding: 10px;border-radius: 10px;"
+                        >Tic Tac Toe<i
+                          class="fa fa-info-circle fa-md"
+                          aria-hidden="true"
+                          style="color: #fff;padding-left: 5px;"
+                        ></i
+                      ></span>
+                      <div class="back-content">
+                        <p class="content">
+                          Tic Tac Toe, also known as noughts and crosses, is a simple yet engaging game played on a 3x3 grid. Two players take turns marking empty squares with either an 'X' or an 'O', aiming to be the first to complete a row, column, or diagonal with their symbol. The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row wins the game. If all nine squares are filled without either player achieving a winning combination, the game ends in a draw. 
+                        </p>
+                      </div>
+                    </div>
+                    <div class="button-container">
+                      {% if request.user.is_authenticated %}
+                      <a
+                        href="tic_tac_toe/"
+                        style="
+                          position: relative;
+                          left: 30px;
+                          top: -12px;
+                          padding: 10px;
+                          display: inline-block;
+                          width: 90%;
+                          margin-bottom: 20px;
+                          border-radius: 10px;
+                          font-size: 14px;
+                          color: #ec6090;
+                          border: 1px solid #ec6090;
+                          font-weight: 400;
+                          text-transform: capitalize;
+                          letter-spacing: 0.5px;
+                          transition: all 0.3s;
+                          text-align: center;
+                        "
+                        onmouseover="this.style.backgroundColor='#fff'"
+                        onmouseout="this.style.backgroundColor='transparent'"
+                        >Play now</a
+                      >
+                      {% else %}
+                      <a
+                        href="#loginModal" data-bs-toggle="modal"
+                        style="
+                          position: relative;
+                          left: 30px;
+                          top: -12px;
+                          padding: 10px;
+                          display: inline-block;
+                          width: 90%;
+                          margin-bottom: 20px;
+                          border-radius: 10px;
+                          font-size: 14px;
+                          color: #ec6090;
+                          border: 1px solid #ec6090;
+                          font-weight: 400;
+                          text-transform: capitalize;
+                          letter-spacing: 0.5px;
+                          transition: all 0.3s;
+                          text-align: center;
+                        "
+                        onmouseover="this.style.backgroundColor='#fff'"
+                        onmouseout="this.style.backgroundColor='transparent'"
+                        >Play now</a
+                      >
+                      {% endif %}
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-sm-12 col-md-6">
+                    <div class="item" style="height: 70%;">
+                      <img
+                        src="../../../static/images/Rock_Paper_Scissors_Screen.jpg"
+                        alt=""
+                      /><span class="info-icon"
+                        style="position: absolute;top: 10px;right: 2px;  width: fit-content;font-size:12px; background-color: #27292a; color: #fff;padding: 10px;border-radius: 10px;"
+                        >Rock Paper Scissors<i
+                          class="fa fa-info-circle fa-md"
+                          aria-hidden="true"
+                          style="color: #fff;padding-left: 5px;"
+                        ></i
+                      ></span>
+                      <div class="back-content">
+                        <p class="content">
+                          Rock Paper Scissors is a simple and fun hand game played between two people. Each player simultaneously forms one of three shapes with their hand: a closed fist representing 'rock', an open hand representing 'paper', or a hand with two fingers extended representing 'scissors'. The rules are straightforward: rock crushes scissors, scissors cuts paper, and paper covers rock. The objective is to outsmart your opponent by predicting their next move while simultaneously choosing the winning gesture. 
+                        </p>
+                      </div>
+                    </div>
+                    <div class="button-container">
+                      {% if request.user.is_authenticated %}
+                      <a
+                        href="rock_paper_scissors/"
+                        style="
+                          position: relative;
+                          left: 30px;
+                          top: -12px;
+                          padding: 10px;
+                          display: inline-block;
+                          width: 90%;
+                          margin-bottom: 20px;
+                          border-radius: 10px;
+                          font-size: 14px;
+                          color: #ec6090;
+                          border: 1px solid #ec6090;
+                          font-weight: 400;
+                          text-transform: capitalize;
+                          letter-spacing: 0.5px;
+                          transition: all 0.3s;
+                          text-align: center;
+                        "
+                        onmouseover="this.style.backgroundColor='#fff'"
+                        onmouseout="this.style.backgroundColor='transparent'"
+                        >Play now</a
+                      >
+                      {% else %}
+                      <a
+                        href="#loginModal" data-bs-toggle="modal"
+                        style="
+                          position: relative;
+                          left: 30px;
+                          top: -12px;
+                          padding: 10px;
+                          display: inline-block;
+                          width: 90%;
+                          margin-bottom: 20px;
+                          border-radius: 10px;
+                          font-size: 14px;
+                          color: #ec6090;
+                          border: 1px solid #ec6090;
+                          font-weight: 400;
+                          text-transform: capitalize;
+                          letter-spacing: 0.5px;
+                          transition: all 0.3s;
+                          text-align: center;
+                        "
+                        onmouseover="this.style.backgroundColor='#fff'"
+                        onmouseout="this.style.backgroundColor='transparent'"
+                        >Play now</a
+                      >
+                      {% endif %}
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-sm-12 col-md-6">
+                    <div class="item" style="height: 70%;">
+                      <img
+                        src="../../../static/images/Hangman_Game_Screen.jpg"
+                        alt=""
+                      /><span class="info-icon"
+                        style="position: absolute;top: 10px;right: 2px;  width: fit-content;font-size:12px; background-color: #27292a; color: #fff;padding: 10px;border-radius: 10px;"
+                        >Hangman<i
+                          class="fa fa-info-circle fa-md"
+                          aria-hidden="true"
+                          style="color: #fff;padding-left: 5px;"
+                        ></i
+                      ></span>
+                      <div class="back-content">
+                        <p class="content">
+                          Hangman is a classic word-guessing game where one player thinks of a word and the other player tries to guess it by suggesting letters. The word to be guessed is represented by a row of dashes, each dash representing a letter in the word. The guessing player suggests letters one at a time, trying to guess the word correctly before running out of attempts. If the suggested letter is present in the word, it is revealed in its correct position(s); if not, a part of a stick figure (the 'hangman') is drawn as a penalty. 
+                        </p>
+                      </div>
+                    </div>
+                    <div class="button-container">
+                      {% if request.user.is_authenticated %}
+                      <a
+                        href="hangman_game/"
+                        style="
+                          position: relative;
+                          left: 30px;
+                          top: -12px;
+                          padding: 10px;
+                          display: inline-block;
+                          width: 90%;
+                          margin-bottom: 20px;
+                          border-radius: 10px;
+                          font-size: 14px;
+                          color: #ec6090;
+                          border: 1px solid #ec6090;
+                          font-weight: 400;
+                          text-transform: capitalize;
+                          letter-spacing: 0.5px;
+                          transition: all 0.3s;
+                          text-align: center;
+                        "
+                        onmouseover="this.style.backgroundColor='#fff'"
+                        onmouseout="this.style.backgroundColor='transparent'"
+                        >Play now</a
+                      >
+                      {% else %}
+                      <a
+                        href="#loginModal" data-bs-toggle="modal"
+                        style="
+                          position: relative;
+                          left: 30px;
+                          top: -12px;
+                          padding: 10px;
+                          display: inline-block;
+                          width: 90%;
+                          margin-bottom: 20px;
+                          border-radius: 10px;
+                          font-size: 14px;
+                          color: #ec6090;
+                          border: 1px solid #ec6090;
+                          font-weight: 400;
+                          text-transform: capitalize;
+                          letter-spacing: 0.5px;
+                          transition: all 0.3s;
+                          text-align: center;
+                        "
+                        onmouseover="this.style.backgroundColor='#fff'"
+                        onmouseout="this.style.backgroundColor='transparent'"
+                        >Play now</a
+                      >
+                      {% endif %}
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-sm-12 col-md-6">
+                    <div class="item" style="height: 70%;">
+                      <img
+                        src="../../../static/images/Memory_Game_Screen.jpg"
+                        alt=""
+                      /><span class="info-icon"
+                        style="position: absolute;top: 10px;right: 2px;  width: fit-content;font-size:12px; background-color: #27292a; color: #fff;padding: 10px;border-radius: 10px;"
+                        >Memory Card<i
+                          class="fa fa-info-circle fa-md"
+                          aria-hidden="true"
+                          style="color: #fff;padding-left: 5px;"
+                        ></i
+                      ></span>
+                      <div class="back-content">
+                        <p class="content">
+                          The Memory Card Game is a popular cognitive matching game where players test their memory skills by uncovering pairs of matching cards. The game begins with a set of cards arranged face-down in a grid formation. Players take turns flipping over two cards at a time, trying to find matching pairs. If a player successfully matches two cards, they remove them from play and earn points. However, if the cards do not match, they are flipped back face-down, and the next player takes their turn. 
+                        </p>
+                      </div>
+                    </div>
+                    <div class="button-container">
+                      {% if request.user.is_authenticated %}
+                      <a
+                        href="memory_game/"
+                        style="
+                          position: relative;
+                          left: 30px;
+                          top: -12px;
+                          padding: 10px;
+                          display: inline-block;
+                          width: 90%;
+                          margin-bottom: 20px;
+                          border-radius: 10px;
+                          font-size: 14px;
+                          color: #ec6090;
+                          border: 1px solid #ec6090;
+                          font-weight: 400;
+                          text-transform: capitalize;
+                          letter-spacing: 0.5px;
+                          transition: all 0.3s;
+                          text-align: center;
+                        "
+                        onmouseover="this.style.backgroundColor='#fff'"
+                        onmouseout="this.style.backgroundColor='transparent'"
+                        >Play now</a
+                      >
+                      {% else %}
+                      <a
+                        href="#loginModal" data-bs-toggle="modal"
+                        style="
+                          position: relative;
+                          left: 30px;
+                          top: -12px;
+                          padding: 10px;
+                          display: inline-block;
+                          width: 90%;
+                          margin-bottom: 20px;
+                          border-radius: 10px;
+                          font-size: 14px;
+                          color: #ec6090;
+                          border: 1px solid #ec6090;
+                          font-weight: 400;
+                          text-transform: capitalize;
+                          letter-spacing: 0.5px;
+                          transition: all 0.3s;
+                          text-align: center;
+                        "
+                        onmouseover="this.style.backgroundColor='#fff'"
+                        onmouseout="this.style.backgroundColor='transparent'"
+                        >Play now</a
+                      >
+                      {% endif %}
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-sm-12 col-md-6">
+                    <div class="item" style="height: 70%;">
+                      <img
+                        src="../../../static/images/RetroPingPong_OG-logo.jpg"
+                        alt=""  style="height:100%"
+                      /><span class="info-icon"
+                        style="position: absolute;top: 10px;right: 2px;  width: fit-content;font-size:12px; background-color: #27292a; color: #fff;padding: 10px;border-radius: 10px;"
+                        >Ping Pong Game<i
+                          class="fa fa-info-circle fa-md"
+                          aria-hidden="true"
+                          style="color: #fff;padding-left: 5px;"
+                        ></i
+                      ></span>
+                      <div class="back-content">
+                        <p class="content">
+                          Ping Pong, also known as table tennis, is a fast-paced and exciting racket sport played on a table divided by a net. Players use small paddles to hit a lightweight ball back and forth across the table, aiming to score points by making the ball bounce on the opponent's side without them being able to return it. The game can be played as singles (one player on each side) or doubles (two players on each side). Players must utilize quick reflexes, hand-eye coordination, and strategic positioning to outmaneuver their opponent and win points. The first player or team to reach a predetermined number of points wins the game.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="button-container">
+                      {% if request.user.is_authenticated %}
+                      {% if request.user.profile.purchase_2 %}
+                      <a
+                        href="pong_game/"
+                        style="
+                          position: relative;
+                          left: 30px;
+                          top: -12px;
+                          padding: 10px;
+                          display: inline-block;
+                          width: 90%;
+                          margin-bottom: 20px;
+                          border-radius: 10px;
+                          font-size: 14px;
+                          color: #ec6090;
+                          border: 1px solid #ec6090;
+                          font-weight: 400;
+                          text-transform: capitalize;
+                          letter-spacing: 0.5px;
+                          transition: all 0.3s;
+                          text-align: center;
+                        "
+                        onmouseover="this.style.backgroundColor='#fff'"
+                        onmouseout="this.style.backgroundColor='transparent'"
+                        >Play now</a
+                      >
+                      {% else %}
+                      <a
+                        href="#paidModal2" data-bs-toggle="modal"
+                        style="
+                          position: relative;
+                          left: 30px;
+                          top: -12px;
+                          padding: 10px;
+                          display: inline-block;
+                          width: 90%;
+                          margin-bottom: 20px;
+                          border-radius: 10px;
+                          font-size: 14px;
+                          color: #ec6090;
+                          border: 1px solid #ec6090;
+                          font-weight: 400;
+                          text-transform: capitalize;
+                          letter-spacing: 0.5px;
+                          transition: all 0.3s;
+                          text-align: center;
+                        "
+                        onmouseover="this.style.backgroundColor='#fff'"
+                        onmouseout="this.style.backgroundColor='transparent'"
+                        >Play now</a
+                      >
+                      {% endif %}
+                      {% else %}
+                      <a
+                        href="#loginModal" data-bs-toggle="modal"
+                        style="
+                          position: relative;
+                          left: 30px;
+                          top: -12px;
+                          padding: 10px;
+                          display: inline-block;
+                          width: 90%;
+                          margin-bottom: 20px;
+                          border-radius: 10px;
+                          font-size: 14px;
+                          color: #ec6090;
+                          border: 1px solid #ec6090;
+                          font-weight: 400;
+                          text-transform: capitalize;
+                          letter-spacing: 0.5px;
+                          transition: all 0.3s;
+                          text-align: center;
+                        "
+                        onmouseover="this.style.backgroundColor='#fff'"
+                        onmouseout="this.style.backgroundColor='transparent'"
+                        >Play now</a
+                      >
+                      {% endif %}
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-sm-12 col-md-6">
+                    <div class="item" style="height: 70%;">
+                      <img
+                        src="../../../static/images/Flappy_Bird_Screen.jpg"
+                        alt=""
+                      /><span class="info-icon"
+                        style="position: absolute;top: 10px;right: 2px;  width: fit-content;font-size:12px; background-color: #27292a; color: #fff;padding: 10px;border-radius: 10px;"
+                        >Flappy Bird<i
+                          class="fa fa-info-circle fa-md"
+                          aria-hidden="true"
+                          style="color: #fff;padding-left: 5px;"
+                        ></i
+                      ></span>
+                      <div class="back-content">
+                        <p class="content">
+                          Flappy Bird is a simple yet addictive side-scrolling mobile game where players control a bird by tapping on the screen to make it flap its wings and navigate through a series of obstacles. The objective is to guide the bird safely through gaps between pipes or obstacles without crashing into them. The game's mechanics are easy to grasp but challenging to master, as players must time their taps carefully to keep the bird airborne and avoid collisions.
+                      </div>
+                    </div>
+                    <div class="button-container">
+                      {% if request.user.is_authenticated %}
+                      <a
+                        href="flappy_bird/"
+                        style="
+                          position: relative;
+                          left: 30px;
+                          top: -12px;
+                          padding: 10px;
+                          display: inline-block;
+                          width: 90%;
+                          margin-bottom: 20px;
+                          border-radius: 10px;
+                          font-size: 14px;
+                          color: #ec6090;
+                          border: 1px solid #ec6090;
+                          font-weight: 400;
+                          text-transform: capitalize;
+                          letter-spacing: 0.5px;
+                          transition: all 0.3s;
+                          text-align: center;
+                        "
+                        onmouseover="this.style.backgroundColor='#fff'"
+                        onmouseout="this.style.backgroundColor='transparent'"
+                        >Play now</a
+                      >
+                      {% else %}
+                      <a
+                        href="#loginModal" data-bs-toggle="modal"
+                        style="
+                          position: relative;
+                          left: 30px;
+                          top: -12px;
+                          padding: 10px;
+                          display: inline-block;
+                          width: 90%;
+                          margin-bottom: 20px;
+                          border-radius: 10px;
+                          font-size: 14px;
+                          color: #ec6090;
+                          border: 1px solid #ec6090;
+                          font-weight: 400;
+                          text-transform: capitalize;
+                          letter-spacing: 0.5px;
+                          transition: all 0.3s;
+                          text-align: center;
+                        "
+                        onmouseover="this.style.backgroundColor='#fff'"
+                        onmouseout="this.style.backgroundColor='transparent'"
+                        >Play now</a
+                      >
+                      {% endif %}
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-sm-12 col-md-6">
+                    <div class="item" style="height: 70%;">
+                      <img
+                        src="../../../static/images/puzzle_game_home.jpg"
+                        alt=""
+                      /><span class="info-icon"
+                        style="position: absolute;top: 10px;right: 2px;  width: fit-content;font-size:12px; background-color: #27292a; color: #fff;padding: 10px;border-radius: 10px;"
+                        >Puzzle Game<i
+                          class="fa fa-info-circle fa-md"
+                          aria-hidden="true"
+                          style="color: #fff;padding-left: 5px;"
+                        ></i
+                      ></span>
+                      <div class="back-content">
+                        <p class="content">
+                          In this engaging puzzle game, players are presented with fragmented parts of an image scattered across the screen. The objective is to carefully analyze the pieces and strategically move them around to join them together, forming a complete and coherent image. Players can rotate, flip, or swap pieces to align them correctly and gradually reveal the hidden picture. As players progress through the levels, the complexity of the puzzles increases, challenging their visual perception and problem-solving skills. 
+                        </p>
+                      </div>
+                    </div>
+                    <div class="button-container">
+                      {% if request.user.is_authenticated %}
+                      {% if request.user.profile.purchase_3 %}
+                      <a
+                        href="puzzle_game/"
+                        style="
+                          position: relative;
+                          left: 30px;
+                          top: -12px;
+                          padding: 10px;
+                          display: inline-block;
+                          width: 90%;
+                          margin-bottom: 20px;
+                          border-radius: 10px;
+                          font-size: 14px;
+                          color: #ec6090;
+                          border: 1px solid #ec6090;
+                          font-weight: 400;
+                          text-transform: capitalize;
+                          letter-spacing: 0.5px;
+                          transition: all 0.3s;
+                          text-align: center;
+                        "
+                        onmouseover="this.style.backgroundColor='#fff'"
+                        onmouseout="this.style.backgroundColor='transparent'"
+                        >Play now</a
+                      >
+                      {% else %}
+                      <a
+                        href="#paidModal3" data-bs-toggle="modal"
+                        style="
+                          position: relative;
+                          left: 30px;
+                          top: -12px;
+                          padding: 10px;
+                          display: inline-block;
+                          width: 90%;
+                          margin-bottom: 20px;
+                          border-radius: 10px;
+                          font-size: 14px;
+                          color: #ec6090;
+                          border: 1px solid #ec6090;
+                          font-weight: 400;
+                          text-transform: capitalize;
+                          letter-spacing: 0.5px;
+                          transition: all 0.3s;
+                          text-align: center;
+                        "
+                        onmouseover="this.style.backgroundColor='#fff'"
+                        onmouseout="this.style.backgroundColor='transparent'"
+                        >Play now</a
+                      >
+                      {% endif %}
+                      {% else %}
+                      <a
+                        href="#loginModal" data-bs-toggle="modal"
+                        style="
+                          position: relative;
+                          left: 30px;
+                          top: -12px;
+                          padding: 10px;
+                          display: inline-block;
+                          width: 90%;
+                          margin-bottom: 20px;
+                          border-radius: 10px;
+                          font-size: 14px;
+                          color: #ec6090;
+                          border: 1px solid #ec6090;
+                          font-weight: 400;
+                          text-transform: capitalize;
+                          letter-spacing: 0.5px;
+                          transition: all 0.3s;
+                          text-align: center;
+                        "
+                        onmouseover="this.style.backgroundColor='#fff'"
+                        onmouseout="this.style.backgroundColor='transparent'"
+                        >Play now</a
+                      >
+                      {% endif %}
+                    </div>
+                  </div>
+                  
+                  <div class="col-lg-4 col-sm-12 col-md-6 carphoto" style="position: relative !important;">
+                    <div class="item" style="height: 70%;">
+                      <img
+                        src="../../../static/images/Car_Game_Screen.jpg"
+                        alt=""
+                      />
+                    
+                    </div>
+                    <div class="button-container" >
+                      <a
+                        href="update_profile/"
+                        style="
+                              position: absolute;
+                              left: 53.5%;
+                              top: 58%;
+                              padding: 10px 20px;
+                              width: 85%;
+                              font-size: 16px;
+                              text-align: center;
+                              text-decoration: none;
+                              background-color: #27292a;                            
+                              color: #ec6090;           
+                              box-shadow: 0 1px 10px #ec6090;
+                              border: 1px solid #ec6090;                           
+                              border-radius: 5px;
+                              cursor: pointer;
+                              transform: translateX(-50%) translateY(100px);                           
+                              opacity: 0;" class="notavailable">Not Available !</a>
+                    </div>
+                  </div>
+                  
+              </div>
+            </div>
+          </div>
+          <!-- **Flipping cards ends** -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="loginModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+          <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title text-dark align-items-center">SignIn Or SignUp Required!</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <a href="../login/" class="btn btn-warning">Login</a>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- paid modals -->
+  <div class="modal" id="paidModal1">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+          <!-- Modal Header -->
+        <div class="modal-header" >
+          <h4 class="modal-title text-dark align-items-center">Snake Game</h4>
+          <div style="display: flex;  align-items: center; position: absolute; left: 88%;" class="gameCoin">
+            <p style="color: #ec6090; padding-right: 3px; font-weight: bolder; font-size: 20px; padding-top: 3px;"> {{ user.profile.user_game_coin }} </p>
+             <img src="../../../static/images/game_coin.png" style="width: 32px;"
+              alt="">
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+         <!-- Modal body -->
+      <div class="modal-body d-flex">
+        <div class="imgdiv">
+        <img src="../../../static/images/Snake_Game_Screen.jpg" alt="" class="rounded-5">
+        {% if user.profile.user_game_coin >= 150 %}
+        <a class="a" 
+          href="{% url 'purchase_game' 1501 %}"
+          onmouseover="this.style.backgroundColor='#ec6090'"
+          onmouseout="this.style.backgroundColor='transparent'">150<img src="../../../static/images/game_coin.png"></a>
+        {% else %}
+        <abbr title="You have not enough game coins" style="text-decoration: none;">
+          <a class="btn-disabled" disabled="disabled">150<img src="../../../static/images/game_coin.png"></a>
+        </abbr>
+        {% endif %}
+      </div>
+        <div class="paradiv">
+        <p>Snake is a timeless arcade game where players control a growing snake that moves around the screen. The objective is simple: guide the snake to eat food pellets scattered throughout the playing field. As the snake consumes food, it grows longer, making it increasingly challenging to navigate without colliding into itself or the walls. Players must skillfully maneuver the snake using arrow keys or swipe gestures to avoid obstacles and aim for high scores. With each bite, the snake's length increases, testing the player's reflexes and strategy. Be cautious, as even the smallest mistake can lead to a game-ending collision. Enjoy the addictive simplicity and challenge of Snake as you strive to achieve the longest length possible!</p>
+      </div>
+      </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div> 
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="modal" id="paidModal2">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+          <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title text-dark align-items-center">Car Game</h4>
+          <div style="display: flex;  align-items: center; position: absolute; left: 88%;" class="gameCoin">
+            <p style="color: #ec6090; padding-right: 3px; font-weight: bolder; font-size: 20px; padding-top: 3px;"> {{ user.profile.user_game_coin }} </p>
+             <img src="../../../static/images/game_coin.png" style="width: 32px;"
+              alt="">
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+         <!-- Modal body -->
+      <div class="modal-body d-flex">
+        <div class="imgdiv">
+        <img src="../../../static/images/RetroPingPong_OG-logo.jpg" alt="" class="rounded-5">
+        {% if user.profile.user_game_coin >= 100 %}
+        <a class="a" 
+          href="{% url 'purchase_game' 1002 %}"
+          onmouseover="this.style.backgroundColor='#ec6090'"
+          onmouseout="this.style.backgroundColor='transparent'">100<img src="../../../static/images/game_coin.png"></a>
+        {% else %}
+        <abbr title="You have not enough game coins" style="text-decoration: none;">
+          <a class="btn-disabled" disabled="disabled">100<img src="../../../static/images/game_coin.png"></a>
+        </abbr>
+        {% endif %}
+      </div>
+        <div class="paradiv">
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum vel maiores odit pariatur ducimus excepturi necessitatibus consequuntur ea perspiciatis cum repellendus incidunt a eveniet quisquam aliquid, sunt magni, dignissimos aut ratione sit dicta, optio atque. Neque cupiditate itaque, accusamus tempore corrupti vitae. Delectus reiciendis quis repellendus praesentium enim voluptatem voluptates.</p>
+      </div>
+      </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal" id="paidModal3">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+          <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title text-dark align-items-center">Puzzle Game</h4>
+          <div style="display: flex;  align-items: center; position: absolute; left: 88%;" class="gameCoin">
+            <p style="color: #ec6090; padding-right: 3px; font-weight: bolder; font-size: 20px; padding-top: 3px;"> {{ user.profile.user_game_coin }} </p>
+             <img src="../../../static/images/game_coin.png" style="width: 32px;"
+              alt="">
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+         <!-- Modal body -->
+      <div class="modal-body d-flex">
+        <div class="imgdiv">
+        <img src="../../../static/images/puzzle_game_home.jpg" alt="" class="rounded-5">
+        {% if user.profile.user_game_coin >= 300 %}
+        <a class="a" 
+          href="{% url 'purchase_game' 3003 %}"
+          onmouseover="this.style.backgroundColor='#ec6090'"
+          onmouseout="this.style.backgroundColor='transparent'">300<img src="../../../static/images/game_coin.png"></a>
+        {% else %}
+        <abbr title="You have not enough game coins" style="text-decoration: none;">
+          <a class="btn-disabled" disabled="disabled">300<img src="../../../static/images/game_coin.png"></a>
+        </abbr>
+        {% endif %}
+      </div>
+        <div class="paradiv">
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum vel maiores odit pariatur ducimus excepturi necessitatibus consequuntur ea perspiciatis cum repellendus incidunt a eveniet quisquam aliquid, sunt magni, dignissimos aut ratione sit dicta, optio atque. Neque cupiditate itaque, accusamus tempore corrupti vitae. Delectus reiciendis quis repellendus praesentium enim voluptatem voluptates.</p>
+      </div>
+      </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+   </div>
+  </div>
+
+
+
+
+  {% include "GameWebsite\\html_files\\footer.html" %}
+
+  <script src="../../../static/js/isotope.min.js"></script>
+  <script src="../../../static/js/owl-carousel.js"></script>
+  <script src="../../../static/js/tabs.js"></script>
+  <script src="../../../static/js/popup.js"></script>
+  <script src="../../../static/js/custom.js"></script>
+
+  <!-- <script>
+    function fun(object)
+  </script> -->
+
+</body>
+
+</html>

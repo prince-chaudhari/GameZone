@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+
+  <title>Game Zone-Reward</title>
+
+  <!-- Latest compiled and minified CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Additional CSS Files -->
+  <link rel="stylesheet" href="../../../static/css/fontawesome.css" />
+  <link rel="stylesheet" href="../../../static/css/templatemo-cyborg-gaming.css" />
+  <link rel="stylesheet" href="../../../static/css/custom.css" />
+  <link rel="icon" type="image/x-icon" href="../../../static/images/gamezone-01.png" />
+  <!--
+
+TemplateMo 579 Cyborg Gaming
+
+https://templatemo.com/tm-579-cyborg-gaming
+
+-->
+</head>
+
+<body>
+
+
+  {% include "GameWebsite\\html_files\\header.html" %}
+
+  <header class="header-area header-sticky">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="main-nav">
+            <!-- ***** Logo Start ***** -->
+            <a href="../home" class="logo">
+              <img src="../../../static/images/gamezone-02.png" alt="" />
+            </a>
+            <!-- ***** Logo End ***** -->
+            <!-- ***** Search End ***** -->
+            <div class="search-input">
+              <form id="search" action="#">
+                <input type="text" placeholder="Type Something" id="searchText" name="searchKeyword" />
+                <i class="fa fa-search"></i>
+              </form>
+              <div class="result-box"></div>
+            </div>
+            <!-- ***** Search End ***** -->
+            <!-- ***** Menu Start ***** -->
+            <ul class="nav">
+              <li><a href="../home/">Home</a></li>
+              <li><a href="../browse/">Browse</a></li>
+              <li><a href="../contact/">Contact Us</a></li>
+              <li><a href="../rewards/" class="active">Rewards</a></li>
+              {% if request.user.is_authenticated %}
+              {% if user.profile_image.url %}
+              <li class="profile">
+                <a href="../profile/">Profile
+                  <img src="{{ user.profile_image.url }}" alt="" /></a>
+              </li>
+              {% else %}
+              <li class="profile">
+                <a href="../profile/">Profile
+                  <img src="../../../static/images/profile-header.jpg" alt="" /></a>
+              </li>
+              {% endif %}
+              {% else %}
+              <li>
+                <div class="form-box">
+                  <div class="button-box">
+                    <a href="../login/" class="toggle-btn" id="t1">
+                      <p style="color: white;">Log in</p>
+                    </a>
+                    <a href="../signup/" class="toggle-btn" id="t2">
+                      <p style="color: black;">Sign Up</p>
+                    </a>
+                  </div>
+                </div>
+              </li>
+              {% endif %}
+            </ul>
+            <a class="menu-trigger">
+              <span>Menu</span>
+            </a>
+            <!-- ***** Menu End ***** -->
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="page-content">
+          <div class="featured-games">
+            <div class="heading-section" style="padding-bottom: 20px;">
+              <h4><em>Game</em> Rewards</h4>
+            </div>
+
+            <div id="accordion1">
+              <div class="card" style=" margin: 10px;border: 3px solid #ec6090;">
+                <div class="card-header" style="background-color: #e45b8b;">
+                  <a class="btn" data-bs-toggle="collapse" href="#dailyCoin">
+                    Daily Deals
+                  </a>
+                </div>
+                <div id="dailyCoin" class="collapse show" data-bs-parent="#accordion1">
+                  <div class="card-body">
+                    {% if check %}
+                    <div class="d-flex mb-3">
+                      <div class="content"
+                        style="border: 2px solid black; border-radius: 7px; padding: 9px; width: 85%; margin-right: 30px;">
+                        <p style="font-size: 20px; margin-bottom: 8px;">Collect Daily Coins</p>
+                      </div>
+                      <a href="{% url 'update_score' 500 %}" class="btn btn-outline-dark align-content-center "
+                        style="width: 150px; " onclick="this.parentNode.classList.add('d-none')">Claim 50 <img
+                          src="../../../static/images/game_coin.png" alt=""
+                          style="width: 30px; padding-bottom: 4px;"></a>
+                    </div>
+                    {% else %}
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div id="accordion">
+
+              <div class="card" style=" margin: 10px;
+    border: 3px solid #ec6090;">
+                <div class="card-header" style="background-color: #e45b8b;">
+                  <a class="btn" data-bs-toggle="collapse" href="#collapseOne">
+                    1. Snake Game
+                  </a>
+                </div>
+                <div id="collapseOne" class="collapse show" data-bs-parent="#accordion">
+                  <div class="card-body">
+
+                    {% if request.user.profile.snake_game_1 and request.user.profile.snake_game_count >= 5 %}
+                    <div class="d-flex mission_1 mb-3">
+                      <div class="content cards-content"
+                        style="border: 2px solid black; border-radius: 7px; padding: 9px; width: 85%; margin-right: 30px;">
+                        <p style="font-size: 20px; margin-bottom: 8px;">Complete 5 games</p>
+                        <div class="progress">
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width: 100%"></div>
+                        </div>
+                      </div>
+                      <a href="{% url 'update_score' 501 %}" class="btn btn-outline-secondary align-content-center "
+                        style="width: 150px; " onclick="this.parentNode.classList.add('d-none')">Claim 50 <img
+                          src="../../../static/images/game_coin.png" alt=""
+                          style="width: 30px; padding-bottom: 4px;"></a>
+                    </div>
+                    {% elif request.user.profile.snake_game_1 %}
+                    <div class="d-flex mission_1 mb-3">
+                      <div class="content cards-content"
+                        style="border: 2px solid black; border-radius: 7px; padding: 9px; width: 85%; margin-right: 30px;">
+                        <p style="font-size: 20px; margin-bottom: 8px;">Complete 5 games</p>
+                        <div class="progress">
+                          {% if request.user.profile.snake_game_count == 1 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:20%"></div>
+                          {% endif %}
+                          {% if request.user.profile.snake_game_count == 2 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:40%"></div>
+                          {% endif %}
+                          {% if request.user.profile.snake_game_count == 3 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:60%"></div>
+                          {% endif %}
+                          {% if request.user.profile.snake_game_count == 4 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:80%"></div>
+                          {% endif %}
+                        </div>
+                      </div>
+                      <a class="btn btn-outline-secondary disabled align-content-center "
+                        style="width: 150px;opacity:0.5">Claim 50 <img src="../../../static/images/game_coin.png" alt=""
+                          style="width: 30px; padding-bottom: 4px;"></a>
+                    </div>
+                    {% endif %}
+
+                    {% if request.user.profile.snake_game_2 and request.user.profile.snake_game_count >= 10 %}
+                    <div class="d-flex mission_2 mb-3">
+                      <div class="content cards-content"
+                        style="border: 2px solid black; border-radius: 7px; padding: 9px; width: 85%; margin-right: 30px;">
+                        <p style="font-size: 20px; margin-bottom: 8px;">Complete 10 games</p>
+                        <div class="progress">
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width: 100%"></div>
+                        </div>
+                      </div>
+                      <a href="{% url 'update_score' 1001 %}" class="btn btn-outline-secondary align-content-center "
+                        style="width: 150px; " onclick="this.parentNode.classList.add('d-none')">Claim 100 <img
+                          src="../../../static/images/game_coin.png" alt=""
+                          style="width: 30px; padding-bottom: 4px;"></a>
+                    </div>
+                    {% elif request.user.profile.snake_game_2 %}
+                    <div class="d-flex mission_2 mb-3">
+                      <div class="content cards-content"
+                        style="border: 2px solid black; border-radius: 7px; padding: 9px; width: 85%; margin-right: 30px;">
+                        <p style="font-size: 20px; margin-bottom: 8px;">Complete 10 games</p>
+                        <div class="progress">
+                          {% if request.user.profile.snake_game_count == 1 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:10%"></div>
+                          {% endif %}
+                          {% if request.user.profile.snake_game_count == 2 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:20%"></div>
+                          {% endif %}
+                          {% if request.user.profile.snake_game_count == 3 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:30%"></div>
+                          {% endif %}
+                          {% if request.user.profile.snake_game_count == 4 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:40%"></div>
+                          {% endif %}
+                          {% if request.user.profile.snake_game_count == 5 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:50%"></div>
+                          {% endif %}
+                          {% if request.user.profile.snake_game_count == 6 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:60%"></div>
+                          {% endif %}
+                          {% if request.user.profile.snake_game_count == 7 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:70%"></div>
+                          {% endif %}
+                          {% if request.user.profile.snake_game_count == 8 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:80%"></div>
+                          {% endif %}
+                          {% if request.user.profile.snake_game_count == 9 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:90%"></div>
+                          {% endif %}
+                        </div>
+                      </div>
+                      <a class="btn btn-outline-secondary disabled align-content-center"
+                        style="width: 150px;opacity:0.5">Claim 100 <img src="../../../static/images/game_coin.png"
+                          alt="" style="width: 30px; padding-bottom: 4px;"></a>
+                    </div>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+
+              <div class="card" style=" margin: 10px;
+  border: 3px solid #ec6090;">
+                <div class="card-header" style="background-color: #e45b8b;">
+                  <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseTwo">
+                    2. Memory Card Game
+                  </a>
+                </div>
+                <div id="collapseTwo" class="collapse" data-bs-parent="#accordion">
+                  <div class="card-body">
+
+                    {% if request.user.profile.momory_card_1 and request.user.profile.memory_card_game_count >= 5 %}
+                    <div class="d-flex mission_1 mb-3">
+                      <div class="content cards-content"
+                        style="border: 2px solid black; border-radius: 7px; padding: 9px; width: 85%; margin-right: 30px;">
+                        <p style="font-size: 20px; margin-bottom: 8px;">Complete 5 games</p>
+                        <div class="progress">
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width: 100%"></div>
+                        </div>
+                      </div>
+                      <a href="{% url 'update_score' 502 %}" class="btn btn-outline-secondary align-content-center "
+                        style="width: 150px; " onclick="this.parentNode.classList.add('d-none')">Claim 50 <img
+                          src="../../../static/images/game_coin.png" alt=""
+                          style="width: 30px; padding-bottom: 4px;"></a>
+                    </div>
+                    {% elif request.user.profile.momory_card_1 %}
+                    <div class="d-flex mission_1 mb-3">
+                      <div class="content cards-content"
+                        style="border: 2px solid black; border-radius: 7px; padding: 9px; width: 85%; margin-right: 30px;">
+                        <p style="font-size: 20px; margin-bottom: 8px;">Complete 5 games</p>
+                        <div class="progress">
+                          {% if request.user.profile.memory_card_game_count == 1 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:20%"></div>
+                          {% endif %}
+                          {% if request.user.profile.memory_card_game_count == 2 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:40%"></div>
+                          {% endif %}
+                          {% if request.user.profile.memory_card_game_count == 3 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:60%"></div>
+                          {% endif %}
+                          {% if request.user.profile.memory_card_game_count == 4 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:80%"></div>
+                          {% endif %}
+                        </div>
+                      </div>
+                      <a class="btn btn-outline-secondary disabled align-content-center "
+                        style="width: 150px;opacity:0.5">Claim 50 <img src="../../../static/images/game_coin.png" alt=""
+                          style="width: 30px; padding-bottom: 4px;"></a>
+                    </div>
+                    {% endif %}
+
+                    {% if request.user.profile.momory_card_2 and request.user.profile.memory_card_game_count >= 10 %}
+                    <div class="d-flex mission_2 mb-3">
+                      <div class="content cards-content"
+                        style="border: 2px solid black; border-radius: 7px; padding: 9px; width: 85%; margin-right: 30px;">
+                        <p style="font-size: 20px; margin-bottom: 8px;">Complete 10 games</p>
+                        <div class="progress">
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width: 100%"></div>
+                        </div>
+                      </div>
+                      <a href="{% url 'update_score' 1002 %}" class="btn btn-outline-secondary align-content-center "
+                        style="width: 150px; " onclick="this.parentNode.classList.add('d-none')">Claim 100 <img
+                          src="../../../static/images/game_coin.png" alt=""
+                          style="width: 30px; padding-bottom: 4px;"></a>
+                    </div>
+                    {% elif request.user.profile.momory_card_2 %}
+                    <div class="d-flex mission_2 mb-3">
+                      <div class="content cards-content"
+                        style="border: 2px solid black; border-radius: 7px; padding: 9px; width: 85%; margin-right: 30px;">
+                        <p style="font-size: 20px; margin-bottom: 8px;">Complete 10 games</p>
+                        <div class="progress">
+                          {% if request.user.profile.memory_card_game_count == 1 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:10%"></div>
+                          {% endif %}
+                          {% if request.user.profile.memory_card_game_count == 2 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:20%"></div>
+                          {% endif %}
+                          {% if request.user.profile.memory_card_game_count == 3 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:30%"></div>
+                          {% endif %}
+                          {% if request.user.profile.memory_card_game_count == 4 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:40%"></div>
+                          {% endif %}
+                          {% if request.user.profile.memory_card_game_count == 5 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:50%"></div>
+                          {% endif %}
+                          {% if request.user.profile.memory_card_game_count == 6 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:60%"></div>
+                          {% endif %}
+                          {% if request.user.profile.memory_card_game_count == 7 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:70%"></div>
+                          {% endif %}
+                          {% if request.user.profile.memory_card_game_count == 8 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:80%"></div>
+                          {% endif %}
+                          {% if request.user.profile.memory_card_game_count == 9 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:90%"></div>
+                          {% endif %}
+                        </div>
+                      </div>
+                      <a class="btn btn-outline-secondary disabled align-content-center"
+                        style="width: 150px;opacity:0.5">Claim 100 <img src="../../../static/images/game_coin.png"
+                          alt="" style="width: 30px; padding-bottom: 4px;"></a>
+                    </div>
+                    {% endif %}
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="card" style=" margin: 10px;
+  border: 3px solid #ec6090;">
+                <div class="card-header" style="background-color: #e45b8b;">
+                  <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseThree">
+                    3. Tic-Tac-Toe
+                  </a>
+                </div>
+                <div id="collapseThree" class="collapse" data-bs-parent="#accordion">
+                  <div class="card-body">
+                    {% if request.user.profile.tic_tac_toe_1 and request.user.profile.tic_tac_toe_count >= 5 %}
+                    <div class="d-flex mission_1 mb-3">
+                      <div class="content cards-content"
+                        style="border: 2px solid black; border-radius: 7px; padding: 9px; width: 85%; margin-right: 30px;">
+                        <p style="font-size: 20px; margin-bottom: 8px;">Complete 5 games</p>
+                        <div class="progress">
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width: 100%"></div>
+                        </div>
+                      </div>
+                      <a href="{% url 'update_score' 503 %}" class="btn btn-outline-secondary  align-content-center "
+                        style="width: 150px; " onclick="this.parentNode.classList.add('d-none')">Claim 50 <img
+                          src="../../../static/images/game_coin.png" alt=""
+                          style="width: 30px; padding-bottom: 4px;"></a>
+                    </div>
+                    {% elif request.user.profile.tic_tac_toe_1 %}
+                    <div class="d-flex mission_1 mb-3">
+                      <div class="content cards-content"
+                        style="border: 2px solid black; border-radius: 7px; padding: 9px; width: 85%; margin-right: 30px;">
+                        <p style="font-size: 20px; margin-bottom: 8px;">Complete 5 games</p>
+                        <div class="progress">
+                          {% if request.user.profile.tic_tac_toe_count == 1 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:20%"></div>
+                          {% endif %}
+                          {% if request.user.profile.tic_tac_toe_count == 2 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:40%"></div>
+                          {% endif %}
+                          {% if request.user.profile.tic_tac_toe_count == 3 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:60%"></div>
+                          {% endif %}
+                          {% if request.user.profile.tic_tac_toe_count == 4 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:80%"></div>
+                          {% endif %}
+                        </div>
+                      </div>
+                      <a class="btn btn-outline-secondary disabled align-content-center "
+                        style="width: 150px;opacity:0.5">Claim 50 <img src="../../../static/images/game_coin.png" alt=""
+                          style="width: 30px; padding-bottom: 4px;"></a>
+                    </div>
+                    {% endif %}
+
+                    {% if request.user.profile.tic_tac_toe_2 and request.user.profile.tic_tac_toe_count >= 10 %}
+                    <div class="d-flex mission_2 mb-3">
+                      <div class="content cards-content"
+                        style="border: 2px solid black; border-radius: 7px; padding: 9px; width: 85%; margin-right: 30px;">
+                        <p style="font-size: 20px; margin-bottom: 8px;">Complete 10 games</p>
+                        <div class="progress">
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width: 100%"></div>
+                        </div>
+                      </div>
+                      <a href="{% url 'update_score' 1003 %}" class="btn btn-outline-secondary align-content-center "
+                        style="width: 150px; " onclick="this.parentNode.classList.add('d-none')">Claim 100 <img
+                          src="../../../static/images/game_coin.png" alt=""
+                          style="width: 30px; padding-bottom: 4px;"></a>
+                    </div>
+                    {% elif request.user.profile.tic_tac_toe_2 %}
+                    <div class="d-flex mission_2 mb-3">
+                      <div class="content cards-content"
+                        style="border: 2px solid black; border-radius: 7px; padding: 9px; width: 85%; margin-right: 30px;">
+                        <p style="font-size: 20px; margin-bottom: 8px;">Complete 10 games</p>
+                        <div class="progress">
+                          {% if request.user.profile.tic_tac_toe_count == 1 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:10%"></div>
+                          {% endif %}
+                          {% if request.user.profile.tic_tac_toe_count == 2 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:20%"></div>
+                          {% endif %}
+                          {% if request.user.profile.tic_tac_toe_count == 3 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:30%"></div>
+                          {% endif %}
+                          {% if request.user.profile.tic_tac_toe_count == 4 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:40%"></div>
+                          {% endif %}
+                          {% if request.user.profile.tic_tac_toe_count == 5 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:50%"></div>
+                          {% endif %}
+                          {% if request.user.profile.tic_tac_toe_count == 6 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:60%"></div>
+                          {% endif %}
+                          {% if request.user.profile.tic_tac_toe_count == 7 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:70%"></div>
+                          {% endif %}
+                          {% if request.user.profile.tic_tac_toe_count == 8 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:80%"></div>
+                          {% endif %}
+                          {% if request.user.profile.tic_tac_toe_count == 9 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:90%"></div>
+                          {% endif %}
+                        </div>
+                      </div>
+                      <a class="btn btn-outline-secondary disabled align-content-center"
+                        style="width: 150px;opacity:0.5">Claim 100 <img src="../../../static/images/game_coin.png"
+                          alt="" style="width: 30px; padding-bottom: 4px;"></a>
+                    </div>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+
+              <div class="card" style=" margin: 10px;
+  border: 3px solid #ec6090;">
+                <div class="card-header" style="background-color: #e45b8b;">
+                  <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseFour">
+                    4. Rock Paper Scissors
+                  </a>
+                </div>
+                <div id="collapseFour" class="collapse" data-bs-parent="#accordion">
+                  <div class="card-body">
+
+                    {% if request.user.profile.rock_paper_scissors_1 and request.user.profile.rock_paper_scissors_count >= 5 %}
+                    <div class="d-flex mission_1 mb-3">
+                      <div class="content cards-content"
+                        style="border: 2px solid black; border-radius: 7px; padding: 9px; width: 85%; margin-right: 30px;">
+                        <p style="font-size: 20px; margin-bottom: 8px;">Complete 5 games</p>
+                        <div class="progress">
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width: 100%"></div>
+                        </div>
+                      </div>
+                      <a href="{% url 'update_score' 504 %}" class="btn btn-outline-secondary align-content-center "
+                        style="width: 150px; " onclick="this.parentNode.classList.add('d-none')">Claim 50 <img
+                          src="../../../static/images/game_coin.png" alt=""
+                          style="width: 30px; padding-bottom: 4px;"></a>
+                    </div>
+                    {% elif request.user.profile.rock_paper_scissors_1 %}
+                    <div class="d-flex mission_1 mb-3">
+                      <div class="content cards-content"
+                        style="border: 2px solid black; border-radius: 7px; padding: 9px; width: 85%; margin-right: 30px;">
+                        <p style="font-size: 20px; margin-bottom: 8px;">Complete 5 games</p>
+                        <div class="progress">
+                          {% if request.user.profile.rock_paper_scissors_count == 1 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:20%"></div>
+                          {% endif %}
+                          {% if request.user.profile.rock_paper_scissors_count == 2 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:40%"></div>
+                          {% endif %}
+                          {% if request.user.profile.rock_paper_scissors_count == 3 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:60%"></div>
+                          {% endif %}
+                          {% if request.user.profile.rock_paper_scissors_count == 4 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:80%"></div>
+                          {% endif %}
+                        </div>
+                      </div>
+                      <a class="btn btn-outline-secondary disabled align-content-center "
+                        style="width: 150px;opacity:0.5">Claim 50 <img src="../../../static/images/game_coin.png" alt=""
+                          style="width: 30px; padding-bottom: 4px;"></a>
+                    </div>
+                    {% endif %}
+
+                    {% if request.user.profile.rock_paper_scissors_2 and request.user.profile.rock_paper_scissors_count >= 10 %}
+                    <div class="d-flex mission_2 mb-3">
+                      <div class="content cards-content"
+                        style="border: 2px solid black; border-radius: 7px; padding: 9px; width: 85%; margin-right: 30px;">
+                        <p style="font-size: 20px; margin-bottom: 8px;">Complete 10 games</p>
+                        <div class="progress">
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width: 100%"></div>
+                        </div>
+                      </div>
+                      <a href="{% url 'update_score' 1004 %}" class="btn btn-outline-secondary align-content-center "
+                        style="width: 150px; " onclick="this.parentNode.classList.add('d-none')">Claim 100 <img
+                          src="../../../static/images/game_coin.png" alt=""
+                          style="width: 30px; padding-bottom: 4px;"></a>
+                    </div>
+                    {% elif request.user.profile.rock_paper_scissors_2 %}
+                    <div class="d-flex mission_2 mb-3">
+                      <div class="content cards-content"
+                        style="border: 2px solid black; border-radius: 7px; padding: 9px; width: 85%; margin-right: 30px;">
+                        <p style="font-size: 20px; margin-bottom: 8px;">Complete 10 games</p>
+                        <div class="progress">
+                          {% if request.user.profile.rock_paper_scissors_count == 1 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:10%"></div>
+                          {% endif %}
+                          {% if request.user.profile.rock_paper_scissors_count == 2 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:20%"></div>
+                          {% endif %}
+                          {% if request.user.profile.rock_paper_scissors_count == 3 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:30%"></div>
+                          {% endif %}
+                          {% if request.user.profile.rock_paper_scissors_count == 4 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:40%"></div>
+                          {% endif %}
+                          {% if request.user.profile.rock_paper_scissors_count == 5 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:50%"></div>
+                          {% endif %}
+                          {% if request.user.profile.rock_paper_scissors_count == 6 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:60%"></div>
+                          {% endif %}
+                          {% if request.user.profile.rock_paper_scissors_count == 7 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:70%"></div>
+                          {% endif %}
+                          {% if request.user.profile.rock_paper_scissors_count == 8 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:80%"></div>
+                          {% endif %}
+                          {% if request.user.profile.rock_paper_scissors_count == 9 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:90%"></div>
+                          {% endif %}
+                        </div>
+                      </div>
+                      <a class="btn btn-outline-secondary disabled align-content-center"
+                        style="width: 150px;opacity:0.5">Claim 100 <img src="../../../static/images/game_coin.png"
+                          alt="" style="width: 30px; padding-bottom: 4px;"></a>
+                    </div>
+                    {% endif %}
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="card" style=" margin: 10px;
+  border: 3px solid #ec6090;">
+                <div class="card-header" style="background-color: #e45b8b;">
+                  <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseFive">
+                    5. Hangman Game
+                  </a>
+                </div>
+                <div id="collapseFive" class="collapse" data-bs-parent="#accordion">
+                  <div class="card-body">
+
+                    {% if request.user.profile.hangman_1 and request.user.profile.hangman_game_count >= 5 %}
+                    <div class="d-flex mission_1 mb-3">
+                      <div class="content cards-content"
+                        style="border: 2px solid black; border-radius: 7px; padding: 9px; width: 85%; margin-right: 30px;">
+                        <p style="font-size: 20px; margin-bottom: 8px;">Complete 5 games</p>
+                        <div class="progress">
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width: 100%"></div>
+                        </div>
+                      </div>
+                      <a href="{% url 'update_score' 505 %}" class="btn btn-outline-secondary align-content-center "
+                        style="width: 150px; " onclick="this.parentNode.classList.add('d-none')">Claim 50 <img
+                          src="../../../static/images/game_coin.png" alt=""
+                          style="width: 30px; padding-bottom: 4px;"></a>
+                    </div>
+                    {% elif request.user.profile.hangman_1 %}
+                    <div class="d-flex mission_1 mb-3">
+                      <div class="content cards-content"
+                        style="border: 2px solid black; border-radius: 7px; padding: 9px; width: 85%; margin-right: 30px;">
+                        <p style="font-size: 20px; margin-bottom: 8px;">Complete 5 games</p>
+                        <div class="progress">
+                          {% if request.user.profile.hangman_game_count == 1 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:20%"></div>
+                          {% endif %}
+                          {% if request.user.profile.hangman_game_count == 2 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:40%"></div>
+                          {% endif %}
+                          {% if request.user.profile.hangman_game_count == 3 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:60%"></div>
+                          {% endif %}
+                          {% if request.user.profile.hangman_game_count == 4 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:80%"></div>
+                          {% endif %}
+                        </div>
+                      </div>
+                      <a class="btn btn-outline-secondary disabled align-content-center "
+                        style="width: 150px;opacity:0.5">Claim 50 <img src="../../../static/images/game_coin.png" alt=""
+                          style="width: 30px; padding-bottom: 4px;"></a>
+                    </div>
+                    {% endif %}
+
+                    {% if request.user.profile.hangman_2 and request.user.profile.hangman_game_count >= 10 %}
+                    <div class="d-flex mission_2 mb-3">
+                      <div class="content cards-content"
+                        style="border: 2px solid black; border-radius: 7px; padding: 9px; width: 85%; margin-right: 30px;">
+                        <p style="font-size: 20px; margin-bottom: 8px;">Complete 10 games</p>
+                        <div class="progress">
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width: 100%"></div>
+                        </div>
+                      </div>
+                      <a href="{% url 'update_score' 1005 %}" class="btn btn-outline-secondary align-content-center "
+                        style="width: 150px; " onclick="this.parentNode.classList.add('d-none')">Claim 100 <img
+                          src="../../../static/images/game_coin.png" alt=""
+                          style="width: 30px; padding-bottom: 4px;"></a>
+                    </div>
+                    {% elif request.user.profile.hangman_2 %}
+                    <div class="d-flex mission_2 mb-3">
+                      <div class="content cards-content"
+                        style="border: 2px solid black; border-radius: 7px; padding: 9px; width: 85%; margin-right: 30px;">
+                        <p style="font-size: 20px; margin-bottom: 8px;">Complete 10 games</p>
+                        <div class="progress">
+                          {% if request.user.profile.hangman_game_count == 1 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:10%"></div>
+                          {% endif %}
+                          {% if request.user.profile.hangman_game_count == 2 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:20%"></div>
+                          {% endif %}
+                          {% if request.user.profile.hangman_game_count == 3 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:30%"></div>
+                          {% endif %}
+                          {% if request.user.profile.hangman_game_count == 4 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:40%"></div>
+                          {% endif %}
+                          {% if request.user.profile.hangman_game_count == 5 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:50%"></div>
+                          {% endif %}
+                          {% if request.user.profile.hangman_game_count == 6 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:60%"></div>
+                          {% endif %}
+                          {% if request.user.profile.hangman_game_count == 7 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:70%"></div>
+                          {% endif %}
+                          {% if request.user.profile.hangman_game_count == 8 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:80%"></div>
+                          {% endif %}
+                          {% if request.user.profile.hangman_game_count == 9 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:90%"></div>
+                          {% endif %}
+                        </div>
+                      </div>
+                      <a class="btn btn-outline-secondary disabled align-content-center"
+                        style="width: 150px;opacity:0.5">Claim 100 <img src="../../../static/images/game_coin.png"
+                          alt="" style="width: 30px; padding-bottom: 4px;"></a>
+                    </div>
+                    {% endif %}
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="card" style=" margin: 10px;
+  border: 3px solid #ec6090;">
+                <div class="card-header" style="background-color: #e45b8b;">
+                  <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseSix">
+                    6. Ping Pong
+                  </a>
+                </div>
+                <div id="collapseSix" class="collapse" data-bs-parent="#accordion">
+                  <div class="card-body">
+
+                    {% if request.user.profile.ping_pong_1 and request.user.profile.ping_pong_count >= 5 %}
+                    <div class="d-flex mission_1 mb-3">
+                      <div class="content cards-content"
+                        style="border: 2px solid black; border-radius: 7px; padding: 9px; width: 85%; margin-right: 30px;">
+                        <p style="font-size: 20px; margin-bottom: 8px;">Complete 5 games</p>
+                        <div class="progress">
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width: 100%"></div>
+                        </div>
+                      </div>
+                      <a href="{% url 'update_score' 506 %}" class="btn btn-outline-secondary align-content-center "
+                        style="width: 150px; " onclick="this.parentNode.classList.add('d-none')">Claim 50 <img
+                          src="../../../static/images/game_coin.png" alt=""
+                          style="width: 30px; padding-bottom: 4px;"></a>
+                    </div>
+                    {% elif request.user.profile.ping_pong_1 %}
+                    <div class="d-flex mission_1 mb-3">
+                      <div class="content cards-content"
+                        style="border: 2px solid black; border-radius: 7px; padding: 9px; width: 85%; margin-right: 30px;">
+                        <p style="font-size: 20px; margin-bottom: 8px;">Complete 5 games</p>
+                        <div class="progress">
+                          {% if request.user.profile.ping_pong_count == 1 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:20%"></div>
+                          {% endif %}
+                          {% if request.user.profile.ping_pong_count == 2 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:40%"></div>
+                          {% endif %}
+                          {% if request.user.profile.ping_pong_count == 3 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:60%"></div>
+                          {% endif %}
+                          {% if request.user.profile.ping_pong_count == 4 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:80%"></div>
+                          {% endif %}
+                        </div>
+                      </div>
+                      <a class="btn btn-outline-secondary disabled align-content-center "
+                        style="width: 150px;opacity:0.5">Claim 50 <img src="../../../static/images/game_coin.png" alt=""
+                          style="width: 30px; padding-bottom: 4px;"></a>
+                    </div>
+                    {% endif %}
+
+                    {% if request.user.profile.ping_pong_2 and request.user.profile.ping_pong_count >= 10 %}
+                    <div class="d-flex mission_2 mb-3">
+                      <div class="content cards-content"
+                        style="border: 2px solid black; border-radius: 7px; padding: 9px; width: 85%; margin-right: 30px;">
+                        <p style="font-size: 20px; margin-bottom: 8px;">Complete 10 games</p>
+                        <div class="progress">
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width: 100%"></div>
+                        </div>
+                      </div>
+                      <a href="{% url 'update_score' 1006 %}" class="btn btn-outline-secondary align-content-center "
+                        style="width: 150px; " onclick="this.parentNode.classList.add('d-none')">Claim 100 <img
+                          src="../../../static/images/game_coin.png" alt=""
+                          style="width: 30px; padding-bottom: 4px;"></a>
+                    </div>
+                    {% elif request.user.profile.ping_pong_2 %}
+                    <div class="d-flex mission_2 mb-3">
+                      <div class="content cards-content"
+                        style="border: 2px solid black; border-radius: 7px; padding: 9px; width: 85%; margin-right: 30px;">
+                        <p style="font-size: 20px; margin-bottom: 8px;">Complete 10 games</p>
+                        <div class="progress">
+                          {% if request.user.profile.ping_pong_count == 1 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:10%"></div>
+                          {% endif %}
+                          {% if request.user.profile.ping_pong_count == 2 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:20%"></div>
+                          {% endif %}
+                          {% if request.user.profile.ping_pong_count == 3 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:30%"></div>
+                          {% endif %}
+                          {% if request.user.profile.ping_pong_count == 4 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:40%"></div>
+                          {% endif %}
+                          {% if request.user.profile.ping_pong_count == 5 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:50%"></div>
+                          {% endif %}
+                          {% if request.user.profile.ping_pong_count == 6 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:60%"></div>
+                          {% endif %}
+                          {% if request.user.profile.ping_pong_count == 7 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:70%"></div>
+                          {% endif %}
+                          {% if request.user.profile.ping_pong_count == 8 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:80%"></div>
+                          {% endif %}
+                          {% if request.user.profile.ping_pong_count == 9 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:90%"></div>
+                          {% endif %}
+                        </div>
+                      </div>
+                      <a class="btn btn-outline-secondary disabled align-content-center"
+                        style="width: 150px;opacity:0.5">Claim 100 <img src="../../../static/images/game_coin.png"
+                          alt="" style="width: 30px; padding-bottom: 4px;"></a>
+                    </div>
+                    {% endif %}
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="card" style=" margin: 10px;
+  border: 3px solid #ec6090;">
+                <div class="card-header" style="background-color: #e45b8b;">
+                  <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseSeven">
+                    7. Puzzle Game
+                  </a>
+                </div>
+                <div id="collapseSeven" class="collapse" data-bs-parent="#accordion">
+                  <div class="card-body">
+
+                    {% if request.user.profile.puzzle_1 and request.user.profile.puzzle_game_count >= 5 %}
+                    <div class="d-flex mission_1 mb-3">
+                      <div class="content cards-content"
+                        style="border: 2px solid black; border-radius: 7px; padding: 9px; width: 85%; margin-right: 30px;">
+                        <p style="font-size: 20px; margin-bottom: 8px;">Complete 5 games</p>
+                        <div class="progress">
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width: 100%"></div>
+                        </div>
+                      </div>
+                      <a href="{% url 'update_score' 507 %}" class="btn btn-outline-secondary align-content-center "
+                        style="width: 150px; " onclick="this.parentNode.classList.add('d-none')">Claim 50 <img
+                          src="../../../static/images/game_coin.png" alt=""
+                          style="width: 30px; padding-bottom: 4px;"></a>
+                    </div>
+                    {% elif request.user.profile.puzzle_1 %}
+                    <div class="d-flex mission_1 mb-3">
+                      <div class="content cards-content"
+                        style="border: 2px solid black; border-radius: 7px; padding: 9px; width: 85%; margin-right: 30px;">
+                        <p style="font-size: 20px; margin-bottom: 8px;">Complete 5 games</p>
+                        <div class="progress">
+                          {% if request.user.profile.puzzle_game_count == 1 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:20%"></div>
+                          {% endif %}
+                          {% if request.user.profile.puzzle_game_count == 2 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:40%"></div>
+                          {% endif %}
+                          {% if request.user.profile.puzzle_game_count == 3 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:60%"></div>
+                          {% endif %}
+                          {% if request.user.profile.puzzle_game_count == 4 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:80%"></div>
+                          {% endif %}
+                        </div>
+                      </div>
+                      <a class="btn btn-outline-secondary disabled align-content-center "
+                        style="width: 150px;opacity:0.5">Claim 50 <img src="../../../static/images/game_coin.png" alt=""
+                          style="width: 30px; padding-bottom: 4px;"></a>
+                    </div>
+                    {% endif %}
+
+                    {% if request.user.profile.puzzle_2 and request.user.profile.puzzle_game_count >= 10 %}
+                    <div class="d-flex mission_2 mb-3">
+                      <div class="content cards-content"
+                        style="border: 2px solid black; border-radius: 7px; padding: 9px; width: 85%; margin-right: 30px;">
+                        <p style="font-size: 20px; margin-bottom: 8px;">Complete 10 games</p>
+                        <div class="progress">
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width: 100%"></div>
+                        </div>
+                      </div>
+                      <a href="{% url 'update_score' 1007 %}" class="btn btn-outline-secondary align-content-center "
+                        style="width: 150px; " onclick="this.parentNode.classList.add('d-none')">Claim 100 <img
+                          src="../../../static/images/game_coin.png" alt=""
+                          style="width: 30px; padding-bottom: 4px;"></a>
+                    </div>
+                    {% elif request.user.profile.puzzle_2 %}
+                    <div class="d-flex mission_2 mb-3">
+                      <div class="content cards-content"
+                        style="border: 2px solid black; border-radius: 7px; padding: 9px; width: 85%; margin-right: 30px;">
+                        <p style="font-size: 20px; margin-bottom: 8px;">Complete 10 games</p>
+                        <div class="progress">
+                          {% if request.user.profile.puzzle_game_count == 1 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:10%"></div>
+                          {% endif %}
+                          {% if request.user.profile.puzzle_game_count == 2 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:20%"></div>
+                          {% endif %}
+                          {% if request.user.profile.puzzle_game_count == 3 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:30%"></div>
+                          {% endif %}
+                          {% if request.user.profile.puzzle_game_count == 4 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:40%"></div>
+                          {% endif %}
+                          {% if request.user.profile.puzzle_game_count == 5 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:50%"></div>
+                          {% endif %}
+                          {% if request.user.profile.puzzle_game_count == 6 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:60%"></div>
+                          {% endif %}
+                          {% if request.user.profile.puzzle_game_count == 7 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:70%"></div>
+                          {% endif %}
+                          {% if request.user.profile.puzzle_game_count == 8 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:80%"></div>
+                          {% endif %}
+                          {% if request.user.profile.puzzle_game_count == 9 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:90%"></div>
+                          {% endif %}
+                        </div>
+                      </div>
+                      <a class="btn btn-outline-secondary disabled align-content-center"
+                        style="width: 150px;opacity:0.5">Claim 100 <img src="../../../static/images/game_coin.png"
+                          alt="" style="width: 30px; padding-bottom: 4px;"></a>
+                    </div>
+                    {% endif %}
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="card" style=" margin: 10px;
+  border: 3px solid #ec6090;">
+                <div class="card-header" style="background-color: #e45b8b;">
+                  <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseEight">
+                    8. Flappy Bird
+                  </a>
+                </div>
+                <div id="collapseEight" class="collapse" data-bs-parent="#accordion">
+                  <div class="card-body">
+
+                    {% if request.user.profile.flappy_bird_1 and request.user.profile.flappy_bird_count >= 5 %}
+                    <div class="d-flex mission_1 mb-3">
+                      <div class="content cards-content"
+                        style="border: 2px solid black; border-radius: 7px; padding: 9px; width: 85%; margin-right: 30px;">
+                        <p style="font-size: 20px; margin-bottom: 8px;">Complete 5 games</p>
+                        <div class="progress">
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width: 100%"></div>
+                        </div>
+                      </div>
+                      <a href="{% url 'update_score' 508 %}" class="btn btn-outline-secondary align-content-center "
+                        style="width: 150px; " onclick="this.parentNode.classList.add('d-none')">Claim 50 <img
+                          src="../../../static/images/game_coin.png" alt=""
+                          style="width: 30px; padding-bottom: 4px;"></a>
+                    </div>
+                    {% elif request.user.profile.flappy_bird_1 %}
+                    <div class="d-flex mission_1 mb-3">
+                      <div class="content cards-content"
+                        style="border: 2px solid black; border-radius: 7px; padding: 9px; width: 85%; margin-right: 30px;">
+                        <p style="font-size: 20px; margin-bottom: 8px;">Complete 5 games</p>
+                        <div class="progress">
+                          {% if request.user.profile.flappy_bird_count == 1 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:20%"></div>
+                          {% endif %}
+                          {% if request.user.profile.flappy_bird_count == 2 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:40%"></div>
+                          {% endif %}
+                          {% if request.user.profile.flappy_bird_count == 3 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:60%"></div>
+                          {% endif %}
+                          {% if request.user.profile.flappy_bird_count == 4 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:80%"></div>
+                          {% endif %}
+                        </div>
+                      </div>
+                      <a class="btn btn-outline-secondary disabled align-content-center "
+                        style="width: 150px;opacity:0.5">Claim 50 <img src="../../../static/images/game_coin.png" alt=""
+                          style="width: 30px; padding-bottom: 4px;"></a>
+                    </div>
+                    {% endif %}
+
+                    {% if request.user.profile.flappy_bird_2 and request.user.profile.flappy_bird_count >= 10 %}
+                    <div class="d-flex mission_2 mb-3">
+                      <div class="content cards-content"
+                        style="border: 2px solid black; border-radius: 7px; padding: 9px; width: 85%; margin-right: 30px;">
+                        <p style="font-size: 20px; margin-bottom: 8px;">Complete 10 games</p>
+                        <div class="progress">
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width: 100%"></div>
+                        </div>
+                      </div>
+                      <a href="{% url 'update_score' 1008 %}" class="btn btn-outline-secondary align-content-center "
+                        style="width: 150px; " onclick="this.parentNode.classList.add('d-none')">Claim 100 <img
+                          src="../../../static/images/game_coin.png" alt=""
+                          style="width: 30px; padding-bottom: 4px;"></a>
+                    </div>
+                    {% elif request.user.profile.flappy_bird_2 %}
+                    <div class="d-flex mission_2 mb-3">
+                      <div class="content cards-content"
+                        style="border: 2px solid black; border-radius: 7px; padding: 9px; width: 85%; margin-right: 30px;">
+                        <p style="font-size: 20px; margin-bottom: 8px;">Complete 10 games</p>
+                        <div class="progress">
+                          {% if request.user.profile.flappy_bird_count == 1 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:10%"></div>
+                          {% endif %}
+                          {% if request.user.profile.flappy_bird_count == 2 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:20%"></div>
+                          {% endif %}
+                          {% if request.user.profile.flappy_bird_count == 3 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:30%"></div>
+                          {% endif %}
+                          {% if request.user.profile.flappy_bird_count == 4 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:40%"></div>
+                          {% endif %}
+                          {% if request.user.profile.flappy_bird_count == 5 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:50%"></div>
+                          {% endif %}
+                          {% if request.user.profile.flappy_bird_count == 6 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:60%"></div>
+                          {% endif %}
+                          {% if request.user.profile.flappy_bird_count == 7 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:70%"></div>
+                          {% endif %}
+                          {% if request.user.profile.flappy_bird_count == 8 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:80%"></div>
+                          {% endif %}
+                          {% if request.user.profile.flappy_bird_count == 9 %}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated"
+                            style="background-color: #d66f93; width:90%"></div>
+                          {% endif %}
+                        </div>
+                      </div>
+                      <a class="btn btn-outline-secondary disabled align-content-center"
+                        style="width: 150px;opacity:0.5">Claim 100 <img src="../../../static/images/game_coin.png"
+                          alt="" style="width: 30px; padding-bottom: 4px;"></a>
+                    </div>
+                    {% endif %}
+
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+  </div>
+
+  {% include "GameWebsite\\html_files\\footer.html" %}
+
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+  <!-- <script src="vendor/bootstrap/js/bootstrap.min.js"></script> -->
+
+  <script src="../../../static/js/custom.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Game Zone-Contact</title>
+
+</head>
+
+<body>
+
+  {% include "GameWebsite\\html_files\\header.html" %}
+
+  <header class="header-area header-sticky">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="main-nav">
+            <!-- ***** Logo Start ***** -->
+            <a href="../home" class="logo">
+              <img src="../../../static/images/gamezone-02.png" alt="" />
+            </a>
+            <!-- ***** Logo End ***** -->
+            <!-- ***** Search End ***** -->
+            <div class="search-input">
+              <form id="search" action="#">
+                <input type="text" placeholder="Type Something" id="searchText" name="searchKeyword" />
+                <i class="fa fa-search"></i>
+              </form>
+              <div class="result-box"></div>
+            </div>
+            <!-- ***** Search End ***** -->
+            <!-- ***** Menu Start ***** -->
+            <ul class="nav">
+              <li><a href="../home/" >Home</a></li>
+              <li><a href="../browse/">Browse</a></li>
+              <li><a href="../contact/" class="active">Contact Us</a></li>
+              <li><a href="../rewards/">Rewards</a></li>  
+              {% if request.user.is_authenticated %}
+                  {% if user.profile_image.url %}
+                    <li class="profile">
+                      <a href="../profile/">Profile
+                        <img src="{{ user.profile_image.url }}" alt="" /></a>
+                    </li>
+                  {% else %}
+                    <li class="profile">  
+                      <a href="../profile/">Profile
+                        <img src="../../../static/images/profile-header.jpg" alt="" /></a>
+                    </li>
+                  {% endif %}
+              {% else %}
+              <li>  
+                <div class="form-box">
+                  <div class="button-box">                
+                    <a href="../login/" class="toggle-btn" id="t1"><p style="color: white;">Log in</p></a>
+                    <a href="../signup/" class="toggle-btn" id="t2"><p style="color: black;">Sign Up</p></a>
+                  </div>
+                </div>
+              </li>
+              {% endif %}
+            </ul>
+            <a class="menu-trigger">
+              <span>Menu</span>
+            </a>
+            <!-- ***** Menu End ***** -->
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="page-content" style="padding: 20px 30px;margin-bottom: 40px;">
+          <div class="heading-section">
+            <h4><em>Feedback</em> form</h4>
+          </div>
+          <div style="margin-left: 12%;">
+            <form class="form-horizontal" action="/action_page.php">
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="fname">First Name:</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="fname" placeholder="Enter First Name" name="fname">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-2 " for="lname">Last Name:</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="lname" placeholder="Enter Last Name" name="lname">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-2 " for="email">Email:</label>
+                <div class="col-sm-10">
+                  <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-2 " for="number">Contact Number:</label>
+                <div class="col-sm-10">          
+                  <input type="text" class="form-control" id="number" placeholder="Enter Contact Number" name="number">
+                </div>
+              </div>
+              <div class="containerr">
+                <div class="wrapper">
+                  <p class="text">How Would You Rate This Game Zone!</p>
+                  <div class="emoji">
+                    <div>&#128512</div>
+                    <div>&#128513</div>
+                    <div>&#128514</div>
+                    <div>&#128515</div>
+                    <div>&#128516</div>
+                  </div>
+  
+                </div>
+                <textarea class="textarea" cols="30" rows="3" placeholder="write your opinion!"></textarea>
+              </div>
+              <button href="#" class="sendbtn" type="submit">Send</button>
+            </form>
+          </div>
+
+          <!-- ***** Featured Start ***** -->
+         <div class="game-details">
+          <div class="row">
+           <div class="col-lg-12">
+             <div class="feature-banner header-text">
+               <div class="heading-section">
+                 <h4><em>Coming</em> Soon</h4>
+               </div>
+               <div class="row">
+                 <div class="col-lg-4">
+                   <img src="../../../static/images/feature-left.jpg" alt="" style="border-radius: 23px;">
+                 </div>
+                 <div class="col-lg-8">
+                   <div class="thumb">
+                     <img src="../../../static/images/feature-right.jpg" alt="" style="border-radius: 23px;">
+                     <a href="https://www.youtube.com/watch?v=r1b03uKWk_M" target="_blank"><i
+                         class="fa fa-play"></i></a>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+       
+         <!-- ***** Featured End ***** -->
+ 
+         <!-- ***** Details Start ***** -->
+         
+           <div class="row">
+             <div class="col-lg-12">
+               <h2>Fortnite Details</h2>
+             </div>
+             <div class="col-lg-12">
+               <div class="content">
+                 <div class="row">
+                   <div class="col-lg-4">
+                     <div class="right-info">
+                       
+                       <ul>
+                         <li><i class="fa fa-server"></i> 36GB</li>
+                         <li><i class="fa fa-gamepad"></i> Action</li>
+                       </ul>
+                     </div>
+                   </div>
+                   <div class="row">
+                   <div class="col-lg-4">
+                     <img src="../../../static/images/details-01.jpg" alt="" style="border-radius: 23px; margin-bottom: 30px;">
+                   </div>
+                   <div class="col-lg-4">
+                     <img src="../../../static/images/details-02.jpg" alt="" style="border-radius: 23px; margin-bottom: 30px;">
+                   </div>
+                   <div class="col-lg-4">
+                     <img src="../../../static/images/details-03.jpg" alt="" style="border-radius: 23px; margin-bottom: 30px;">
+                   </div>
+                 </div>
+               </div>
+               </div>
+             </div>
+           </div>
+         </div>
+         <!-- ***** Details End ***** -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% include "GameWebsite\\html_files\\footer.html" %}
+
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+  <script src="../../../static/js/isotope.min.js"></script>
+  <script src="../../../static/js/owl-carousel.js"></script>
+  <script src="../../../static/js/tabs.js"></script>
+  <script src="../../../static/js/popup.js"></script>
+  <script src="../../../static/js/custom.js"></script>
+
+  <script>
+    const container=document.querySelector('.containerr');
+    const emoji=document.querySelector('.emoji');
+    const textarea=document.querySelector('textarea');
+    const btn=document.querySelector('.sendbtn');
+
+    emoji.addEventListener('click',(e)=>{
+      if(e.target.className.includes('emoji')) return;
+
+      textarea.classList.add('textarea--active');
+      btn.classList.add('sendbtn--active');
+    })
+
+    container.addEventListener('mouseleave',()=>{
+      textarea.classList.remove('textarea--active');
+      // btn.classList.add('.sendbtn--active');
+    })
+  </script>
+</body>
+
+</html>

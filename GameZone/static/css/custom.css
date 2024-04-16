@@ -1,0 +1,266 @@
+.cards {
+  margin-top: 60px;
+  padding: 30px;
+  background-color: #1f2122;
+  border-radius: 23px;
+}
+
+.cards .item {
+  position: relative;
+  background-color: #27292a;
+  border-radius: 23px;
+  margin: 30px;
+  height: 63%;
+  /* Adjust height as needed */
+  width: 90%;
+  overflow: hidden;
+  transition: transform 0.5s;
+  /* Add transition effect */
+}
+
+.cards .item.flipped {
+  transform: rotateY(180deg);
+}
+
+.cards .item .info-icon {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+}
+
+.cards .item img {
+  transition: transform 0.3s ease;
+}
+
+.cards .item:hover img {
+  transform: scale(1.1);
+  /* Adjust the scale factor as needed */
+}
+
+.back-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  background-color: #fff;
+  /* Adjust background color */
+  color: #333;
+  /* Adjust text color */
+  transform: rotateY(-180deg);
+  /* Opposite rotation */
+  backface-visibility: hidden;
+  display: none;
+}
+
+.cards .item.flipped .back-content {
+  display: block;
+  transform: rotateY(0deg);
+  /* Revert rotation */
+}
+
+.back-content .content {
+  transform: rotateY(180deg);
+  overflow-y: auto;
+  font-size: 13px;
+  line-height: 20px;
+  /* Opposite rotation for content */
+}
+
+.carphoto:hover .notavailable {
+  transition: 0.5s !important;
+  opacity: 1 !important;
+  transform: translateX(-50%) !important;
+  pointer-events: none;
+}
+
+.carphoto:hover img {
+  opacity: 0.4;
+}
+
+.result-box {
+  /* position: absolute; */
+  margin-top: 2%;
+  width: 87%;
+  background-color: rgb(31, 33, 34);
+  color: #fff;
+  position: absolute;
+  /* top: 1000px; */
+  left: 7%;
+  z-index: -1;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  transition: all 0.5s;
+}
+
+.result-box ul {
+  padding: 15px 10px;
+}
+
+.result-box ul li {
+  list-style: none;
+  border-radius: 3px;
+  padding: 15px 10px;
+  cursor: pointer;
+}
+
+.result-box ul li:hover {
+  /* background: rgba(255,255,255,0.4); */
+  background: #717171;
+  color: #fff;
+}
+
+.modal-body .imgdiv a {
+  position: relative;
+  left: 15px;
+  top: 12px;
+  padding: 10px;
+  display: inline-block;
+  width: 90%;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  color: black;
+  border: 1px solid #ec6090;
+  font-weight: 400;
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+  transition: all 0.3s;
+  display: flex;
+  justify-content: center;
+
+}
+
+.modal-body .imgdiv a img {
+  height: 20px;
+  width: 20px;
+}
+
+.modal-body .paradiv {
+  padding: 10px;
+  padding-left: 30px;
+  text-align: justify;
+}
+
+.form-group label {
+  margin: 10px !important;
+  margin-top: 30px !important;
+  color: #fff !important;
+}
+
+.containerr {
+  margin-top: 20px;
+  width: 83.54%;
+  background-color: #ec6090;
+  border-radius: .5rem;
+  box-shadow: 0 0 2rem rgba(0, 0, 0, .3);
+  overflow: hidden;
+  position: relative;
+}
+
+.wrapper {
+  margin: 2rem 0;
+}
+
+.text {
+  margin-bottom: .5rem;
+  font-size: 1em;
+  color: #fdfdfd;
+  text-align: center;
+}
+
+.emoji {
+  font-size: 1.3em;
+  display: flex;
+  justify-content: center;
+}
+
+.emoji>div:not(:first-child) {
+  margin-left: 1rem;
+}
+
+.emoji>div {
+  cursor: pointer;
+  transition: transform .2s ease-in-out;
+}
+
+.emoji>div:hover {
+  transform: scale(1.4);
+}
+
+.textarea {
+  width: 100%;
+  display: block;
+  background-color: #e781a5;
+  color: #eee;
+  border: none;
+  resize: none;
+  border: none;
+  outline: none;
+  height: 0;
+  opacity: 0;
+  transition: all .6s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.textarea::placeholder {
+  color: grey;
+}
+
+.textarea--active {
+  padding: 1rem;
+  opacity: 1;
+  height: 6rem;
+}
+
+.sendbtn {
+  text-decoration: none;
+  color: #eee;
+  padding: .4rem 1rem;
+  border-radius: 4px;
+  background-color: #ec6090;
+  position: relative;
+  top: .5rem;
+  left: 37%;
+  display: none;
+}
+
+.sendbtn--active {
+  display: inline-block;
+}
+
+.btn-disabled,
+.btn-disabled[disabled] {
+  opacity: .6;
+  cursor: default !important;
+  pointer-events: none;
+}
+
+.card {
+  margin: 10px;
+  border: 3px solid #ec6090;
+}
+
+.card .card-header {
+  background-color: #e45b8b;
+}
+
+.card .card-header a {
+  color: #ffffff;
+}
+
+.progress-bar {
+  background-color: #d66f93;
+}
+
+.info-icon {
+  position: absolute;
+  top: 10px;
+  right: 2px;
+  width: fit-content;
+  background-color: #27292a;
+  color: #fff;
+  padding: 12px;
+  border-radius: 10px;
+}

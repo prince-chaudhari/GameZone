@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <title>Game Zone-Home</title>
+</head>
+
+<body>
+
+  {% include "GameWebsite\\html_files\\header.html" %}
+
+<header class="header-area header-sticky">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <nav class="main-nav">
+          <!-- ***** Logo Start ***** -->
+          <a href="../home" class="logo">
+            <img src="../../../static/images/gamezone-02.png" alt="" />
+          </a>
+          <!-- ***** Logo End ***** -->
+          <!-- ***** Search End ***** -->
+          <div class="search-input">
+            <form id="search" action="#">
+              <input type="text" placeholder="Type Something" id="searchText" name="searchKeyword" />
+              <i class="fa fa-search"></i>
+            </form>
+            <div class="result-box"></div>
+          </div>
+          <!-- ***** Search End ***** -->
+          <!-- ***** Menu Start ***** -->
+          <ul class="nav">
+            <li><a href="../home/" class="active">Home</a></li>
+            <li><a href="../browse/">Browse</a></li>
+            <li><a href="../contact/">Contact Us</a></li>
+            <li><a href="../rewards/">Rewards</a></li>
+            {% if request.user.is_authenticated %}
+            {% if user.profile_image.url %}
+            <li class="profile">
+              <a href="../profile/">Profile <img src="{{ user.profile_image.url }}" alt="" /></a>
+            </li>
+            {% else %}
+            <li class="profile">
+              <a href="../profile/">Profile
+                <img src="../../../static/images/profile-header.jpg" alt="" /></a>
+            </li>
+            {% endif %} {% else %}
+            <li>
+              <div class="form-box">
+                <div class="button-box">
+                  <a href="../login/" class="toggle-btn" id="t1">
+                    <p style="color: white">Log in</p>
+                  </a>
+                  <a href="../signup/" class="toggle-btn" id="t2">
+                    <p>Sign Up</p>
+                  </a>
+                </div>
+              </div>
+            </li>
+            {% endif %}
+          </ul>
+          <a class="menu-trigger">
+            <span>Menu</span>
+          </a>
+          <!-- ***** Menu End ***** -->
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="page-content">
+          <!-- ***** Banner Start ***** -->
+          <div class="main-banner"> 
+            <div class="row">
+              <div class="col-lg-7">
+                <div class="header-text">
+                  <h6>Welcome To Gamezone</h6>
+                  <h4><em>Browse</em> Our Popular Games Here</h4>
+                  <div class="main-button">
+                    <a href="../browse/">Browse Now</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ***** Banner End ***** -->
+
+          <!-- ***** Most Popular Start ***** -->
+          <div class="most-popular">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="heading-section">
+                  <h4><em>Most Popular</em> Right Now</h4>
+                </div>
+                <div class="row">
+                  <div class="col-lg-4 col-sm-6">
+                    <div class="item">
+                      <img src="../../../static/images/snake_game_home.jpg" alt="" />
+                      <h4>Snake Game<br /><span>Sandbox</span></h4>
+                      <ul>
+                        <li><i class="fa fa-star"></i> 4.8</li>
+                        <li><i class="fa fa-download"></i> 2.3M</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-sm-6">
+                    <div class="item">
+                      <img src="../../../static/images/car_game_home.jpg" alt="" />
+                      <h4>Racing Car<br /><span>Coming Soon</span></h4>
+                      <!-- <ul>
+                        <li><i class="fa fa-star"></i> 4.8</li>
+                        <li><i class="fa fa-download"></i> 2.3M</li>
+                      </ul> -->
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-sm-6">
+                    <div class="item">
+                      <img src="../../../static/images/tic_tac_toe_homr.jpg" alt="" />
+                      <h4>Tic Tac Toe<br /><span>Steam-X</span></h4>
+                      <ul>
+                        <li><i class="fa fa-star"></i> 4.8</li>
+                        <li><i class="fa fa-download"></i> 2.3M</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-sm-6">
+                    <div class="item">
+                      <img src="../../../static/images/puzzle_game_home.jpg" alt="" />
+                      <h4>Puzzle<br /><span>Mind Game</span></h4>
+                      <ul>
+                        <li><i class="fa fa-star"></i> 4.8</li>
+                        <li><i class="fa fa-download"></i> 2.3M</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-sm-6">
+                    <div class="item">
+                      <img src="../../../static/images/Hangman_Game_Screen.jpg" alt="" />
+                      <h4>HangMan<br /><span>Mind Game</span></h4>
+                      <ul>
+                        <li><i class="fa fa-star"></i> 4.8</li>
+                        <li><i class="fa fa-download"></i> 2.3M</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-sm-6">
+                    <div class="item">
+                      <img src="../../../static/images/RetroPingPong_OG-logo.jpg" alt=""/>
+                      <h4>Ping Pong game<br /><span>Entertainer</span></h4>
+                      <ul>
+                        <li><i class="fa fa-star"></i> 4.8</li>
+                        <li><i class="fa fa-download"></i> 2.3M</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-lg-12">
+                    <div class="main-button">
+                      <a href="browse.html">Discover Popular</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ***** Most Popular End ***** -->
+
+          <!-- ***** Gaming Library Start ***** -->
+          <!-- <div class="gaming-library">
+              <div class="col-lg-12">
+                <div class="heading-section">
+                  <h4><em>Your Gaming</em> Library</h4>
+                </div>
+                <div class="item">
+                  <ul>
+                    <li>
+                      <img
+                        src="../../../static/images/game-01.jpg"
+                        alt=""
+                        class="templatemo-item"
+                      />
+                    </li>
+                    <li>
+                      <h4>Dota 2</h4>
+                      <span>Sandbox</span>
+                    </li>
+                    <li>
+                      <h4>Date Added</h4>
+                      <span>24/08/2036</span>
+                    </li>
+                    <li>
+                      <h4>Hours Played</h4>
+                      <span>634 H 22 Mins</span>
+                    </li>
+                    <li>
+                      <h4>Currently</h4>
+                      <span>Downloaded</span>
+                    </li>
+                    <li>
+                      <div class="main-border-button border-no-active">
+                        <a href="#">Donwloaded</a>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="item">
+                  <ul>
+                    <li>
+                      <img
+                        src="../../../static/images/game-02.jpg"
+                        alt=""
+                        class="templatemo-item"
+                      />
+                    </li>
+                    <li>
+                      <h4>Fortnite</h4>
+                      <span>Sandbox</span>
+                    </li>
+                    <li>
+                      <h4>Date Added</h4>
+                      <span>22/06/2036</span>
+                    </li>
+                    <li>
+                      <h4>Hours Played</h4>
+                      <span>740 H 52 Mins</span>
+                    </li>
+                    <li>
+                      <h4>Currently</h4>
+                      <span>Downloaded</span>
+                    </li>
+                    <li>
+                      <div class="main-border-button">
+                        <a href="#">Donwload</a>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="item last-item">
+                  <ul>
+                    <li>
+                      <img
+                        src="../../../static/images/game-03.jpg"
+                        alt=""
+                        class="templatemo-item"
+                      />
+                    </li>
+                    <li>
+                      <h4>CS-GO</h4>
+                      <span>Sandbox</span>
+                    </li>
+                    <li>
+                      <h4>Date Added</h4>
+                      <span>21/04/2036</span>
+                    </li>
+                    <li>
+                      <h4>Hours Played</h4>
+                      <span>892 H 14 Mins</span>
+                    </li>
+                    <li>
+                      <h4>Currently</h4>
+                      <span>Downloaded</span>
+                    </li>
+                    <li>
+                      <div class="main-border-button border-no-active">
+                        <a href="#">Donwloaded</a>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="main-button">
+                  <a href="profile.html">View Your Library</a>
+                </div>
+              </div>
+            </div> -->
+          <!-- ***** Gaming Library End ***** -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% include "GameWebsite\\html_files\\footer.html" %}
+
+  <!-- Scripts -->
+
+  <script src="../../../static/js/isotope.min.js"></script>
+  <script src="../../../static/js/owl-carousel.js"></script>
+  <script src="../../../static/js/tabs.js"></script>
+  <script src="../../../static/js/popup.js"></script>
+  <script src="../../../static/js/custom.js"></script>
+</body>
+
+</html>
